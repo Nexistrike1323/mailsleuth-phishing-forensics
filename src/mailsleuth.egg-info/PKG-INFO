@@ -1,0 +1,72 @@
+Metadata-Version: 2.4
+Name: mailsleuth
+Version: 1.0.0
+Summary: Evidence-Based Phishing Email Forensics and Threat Assessment
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-cov>=5.0; extra == "dev"
+
+# MailSleuth
+
+**Phishing Email Forensics & Evidence-Based Threat Assessment**
+
+MailSleuth is a local-first Python tool for static analysis of `.eml` email files. It extracts sender and authentication headers, URLs and attachment metadata, records investigation evidence in SQLite, and generates JSON and Markdown reports.
+
+## Requirements
+
+- Python 3.12+
+- Linux, WSL or Windows
+- No API key or cloud service required for core analysis
+
+## Install
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+```
+
+## Usage
+
+```bash
+mailsleuth analyze samples/example.eml
+mailsleuth list
+mailsleuth show MS-CASEID
+```
+
+Reports are written to `reports/`. The default SQLite database is `data/mailsleuth.db`.
+
+## Analysis
+
+- RFC email parsing using Python's standard email package
+- From, Reply-To and Return-Path comparison
+- Extraction of SPF, DKIM and DMARC results from supplied Authentication-Results headers
+- Static URL extraction and heuristic indicators
+- Attachment SHA-256, file signatures, MIME and extension checks
+- SQLite case, finding and evidence persistence
+- Deterministic, explainable triage score
+- JSON and Markdown reports
+
+## Safety and limitations
+
+- Attachments are never executed.
+- URLs are never opened or fetched.
+- No live SPF, DKIM or DMARC verification is performed.
+- Authentication-Results headers can be forged in an EML file.
+- URL and file heuristics are indicators, not proof of malware.
+- A file signature check is not antivirus scanning.
+- Risk scores are triage aids, not probabilities.
+- Do not upload confidential email to third-party services without authorization.
+
+## Tests
+
+```bash
+python -m pytest -q
+```
+
+## License
+
+MIT
