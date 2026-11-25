@@ -168,6 +168,11 @@ npm run build
 - The current implementation is a local investigation MVP, not a production email gateway or a replacement for a full SOC workflow.
 - The API is intended for local use. Do not expose it publicly without adding authentication, authorization, and deployment hardening.
 
-## License
+## License## Author & Ownership
 
-No open-source license has been assigned yet. All rights reserved unless a license is added by the repository owner.
+**Created and Maintained by:** Venkata Neeraj Meka  
+**GitHub:** [@Nexistrike1323](https://github.com/Nexistrike1323)
+
+© 2026 Venkata Neeraj Meka. All rights reserved.
+
+Unauthorized copying, modification, distribution, or commercial use of this project is not permitted without the author's permission.
